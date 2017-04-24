@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+      <div class="panel-heading">Burgers to devour</div>
+        <div class="panel-body">
+          {{#each toEat}}
+          <form class="form-inline" action="/{{this.id}}?_method=PUT" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="form-group">
+              <label for="devoured"><h4><span class="label label-warning">{{this.burger_name}}</span></h4></label>
+              <input type="hidden" name="devoured" value="1">
+            </div>
+            <button class="btn btn-xs btn-primary" type="submit">Devour it!</button>
+          </form>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <img class="burger" src="/public/images/classic-burger.png">
+      <h1 class="text-center text-primary">Eat-Da-Burger</h1>
+      <form class="form-inline" action="/?_method=POST" method="POST">
+        <div class="form-group">
+          <input class="form-control" type="text" name="burger_name">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="panel panel-danger">
+      <div class="panel-heading">devoured</div>
+        <div class="panel-body">
+          {{#each eaten}}
+          <h4><span class="label label-warning">{{this.burger_name}}</span></h4>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
